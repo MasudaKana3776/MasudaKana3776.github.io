@@ -1,0 +1,99 @@
+@import "_reset.scss";
+@import "_mixin.scss";
+
+img{
+  max-width: 100%;
+}
+body{
+  height: 2000px;
+}
+
+header{
+  width: 100%;
+  height: 120px;
+  background-color: #eee;
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  align-items: center;/* 縦の軸 */
+  justify-content: space-around;/* 両端にも余白 */
+  position: sticky;
+  top: -60px;/* 60px(細いヘッダー)-120px(元々のヘッダー)=-60px */
+}
+.header-inner{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
+  position: sticky;
+  top: 0;
+}
+h1{
+  color: #555;
+}
+.g-nav>ul{
+  display: flex;
+}
+.g-nav li{
+  margin: 0 16px;
+}
+.g-nav a{
+  display: block;
+  padding: 16px;
+  color: #555;
+  text-align: center;/* 横方向中央に配置 */
+  line-height: 1.2;/* デフォルト1.5 */
+  overflow: hidden;
+}
+.g-nav span{
+  display: block;/* spanは最初inline */
+  color: #347FA0;
+  @include font-size(13);
+  padding-bottom: 5px;
+}
+.g-nav a::after{
+  content: "";
+  display: block;
+  width: 4em;
+  height: 8px;
+  margin: 0 auto;
+  background-color: #347FA0;
+  transform: scale(0);/* 0から1にすると、中央から現れる */
+}
+.g-nav a:hover::after{
+  transform: scale(1);
+  transition: 0.2s;
+}
+/* ーーーーーーーーーーーーーーーーーーー
+Video動画部分 */
+.video-wrapper{/* 親にサイズ指定 */
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;/* navの下に移動 */
+}
+.video-wrapper>video{/* 子にobject-fitのcover */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* ーーーーーーーーーーーーーーーーーーー
+コンテンツ部分 */
+.content{
+  width: 50%;
+  margin: 4vw;
+  padding: 4vw;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+h2{
+  text-align: center;
+  @include font-size(60);
+  margin-bottom: 2vw;
+}
+.content>p{
+  @include font-size(20);
+  line-height: 1.8;
+}
